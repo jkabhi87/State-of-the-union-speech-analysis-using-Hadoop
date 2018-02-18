@@ -1,0 +1,26 @@
+map(String filename, String document) {
+  (String) words, (Integer) counts = tokenize(document);
+  for each word in words {
+    emit((String year,(String)word, (Integer) count);
+  }
+}
+
+reduce(String year, String Token, List<Integer> values) {
+
+  Integer wordmin = infinity;
+  Integer wordmax = -1;
+  for each value in values {
+    if wordmin[Token] > value {
+      wordmin[Token] = value;
+    }
+
+    if wordmax[Token] < value {
+      wordmax[Token] = value
+    }
+
+  }
+
+  for each word in Token {
+    emit ((String) word, (Integer) wordmin, (Integer) wordmax );
+  }
+}

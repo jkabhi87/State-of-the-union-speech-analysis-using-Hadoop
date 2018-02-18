@@ -1,0 +1,32 @@
+100M one file
+
+real	1m28.041s
+user	0m7.512s
+sys	0m0.533s
+---------------------
+
+50M 2 files
+
+real	1m22.057s
+user	0m7.606s
+sys	0m0.511s
+---------------------
+10M 10 files
+
+real	1m9.217s
+user	0m7.533s
+sys	0m0.523s
+---------------------
+
+150M 1 file
+
+real	1m48.364s
+user	0m7.536s
+sys	0m0.569s
+----------------------
+
+small files
+
+real	0m35.707s
+user	0m8.043s
+sys	0m0.550s

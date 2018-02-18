@@ -1,0 +1,21 @@
+map(String filename, String document) {
+  year = filename;
+  List<String> T= tokenize(document);
+  for each token in T {
+    emit((String) year,(String)token, (Integer) 1);
+  }
+}
+
+reduce(String years, String Token, List<Integer> values) {
+
+  Integer wordcount = 0;
+  Integer totalwordcount = 0
+  for each (year,token) in (years,Token) {
+    wordcount[(year,token)] = wordcount[token]+value;
+    totalwordcount[year] = totalwordcount[year]+ value;
+    }
+
+  for each (year,token) in (years,Token) {
+    emit ((String) year, (String) token, (Float) wordcount[(year,token)]/totalwordcount);
+  }
+}

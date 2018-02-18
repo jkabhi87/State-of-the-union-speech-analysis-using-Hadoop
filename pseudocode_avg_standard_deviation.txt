@@ -1,0 +1,33 @@
+map(String filename, String document) {
+  year = filename;
+  List<String> T= tokenize(document);
+  for each token in T {
+    emit((String) year,(String)token, (Integer) count);
+  }
+}
+
+reduce(String years, String Token, List<Integer> values) {
+
+  for each year,word in years,Token {
+    wordcount[(year,word)] = value;
+    totalwordcountfor4years[word] += value;
+  }
+
+  for each word in Token {
+    average[word] = totalwordcountfor4years/4;
+  }
+
+  for each (year,word) in (rangeof4years,Token) {
+    summation[word] += ((wordcount[(year,word)] - average[word]) ^ 2)
+  }
+
+  for each word in Token {
+    summation[word] = summation[word]/4;
+    std_dev[word] = math.sqrt(summation[word]);
+  }
+
+  for each word in Token {
+    emit ((String) word, (Float) average[word], (Float) std_dev[word] );
+  }
+
+}

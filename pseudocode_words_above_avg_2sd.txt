@@ -1,0 +1,22 @@
+map(String filename, String document) {
+  if filename like Integer {
+    (String) word, (Integer) count = tokenize(document);
+  }
+  else {
+    (String) word, (Float) avg, (Float) std_dev = tokenize(document);
+    wordavgplus2sd[word] = avg + (2 * std_dev);
+  }
+
+  for each word in words {
+    emit((String) word,(Float)wordavgplus2sd[word], (Float) count);
+  }
+}
+
+reduce(String Token, Float wordavgplus2sd, Float count) {
+
+  for each word in Token{
+    if(count > wordavgplus2sd)
+    emit ((String) word );
+  }
+
+}
